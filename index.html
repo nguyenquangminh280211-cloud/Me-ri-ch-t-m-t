@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Merry Christmas Thư 🎄</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  background:black;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  overflow:hidden;
+  font-family:Segoe UI, sans-serif;
+}
+#box{max-width:360px}
+.line{
+  opacity:0;
+  margin:10px 0;
+  font-size:16px;
+}
+.first{
+  font-size:17px;
+  color:#ffd966;
+}
+.snow{
+  position:absolute;
+  top:-10px;
+  animation:fall linear infinite;
+}
+@keyframes fall{
+  to{transform:translateY(110vh)}
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/12/20/audio_2d8fcd8c33.mp3">
+</audio>
+
+<div id="box">
+  <div class="line first">Có một người đang nghĩ tới Thư lúc này…</div>
+  <div class="line">🎄 Merry Christmas, Thư 🎄</div>
+  <div class="line">Chào Thư 💛</div>
+  <div class="line">Giáng Sinh tới rồi nè,</div>
+  <div class="line">Minh chúc Thư luôn vui vẻ,</div>
+  <div class="line">cười nhiều hơn những ngày bình thường một chút 🎁</div>
+  <div class="line">Mong mùa đông này sẽ ấm hơn,</div>
+  <div class="line">không chỉ vì áo ấm</div>
+  <div class="line">mà vì có những điều dễ thương xung quanh ✨</div>
+  <div class="line">Chúc Thư một Giáng Sinh thật an lành 🎄</div>
+  <div class="line">— Minh</div>
+</div>
+
+<script>
+/* chữ hiện từng dòng */
+const lines=document.querySelectorAll('.line');
+lines.forEach((l,i)=>{
+  setTimeout(()=>{l.style.opacity=1}, 1500 + i*1200);
+});
+
+/* tuyết + tim */
+for(let i=0;i<60;i++){
+  let s=document.createElement("div");
+  s.className="snow";
+  s.innerHTML=Math.random()>0.5?"❄":"💛";
+  s.style.left=Math.random()*100+"vw";
+  s.style.fontSize=(Math.random()*16+10)+"px";
+  s.style.animationDuration=(Math.random()*6+4)+"s";
+  document.body.appendChild(s);
+}
+</script>
+
+</body>
+</html>
