@@ -3,54 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <title>Merry Christmas</title>
+
 <style>
-    body {
-        margin: 0;
-        background: black;
-        overflow: hidden;
-        font-family: Arial, sans-serif;
-        color: white;
-        cursor: pointer;
-    }
+body{
+    margin:0;
+    background:black;
+    overflow:hidden;
+    color:white;
+    font-family: Arial, sans-serif;
+    cursor:pointer;
+}
 
-    .text {
-        position: absolute;
-        top: 40%;
-        width: 100%;
-        text-align: center;
-        font-size: 32px;
-        opacity: 0;
-        animation: fadeIn 4s forwards;
-        animation-delay: 2s;
-    }
+/* chữ */
+.text{
+    position:absolute;
+    top:40%;
+    width:100%;
+    text-align:center;
+    font-size:32px;
+    opacity:0;
+    animation: fade 4s forwards;
+    animation-delay:2s;
+}
 
-    @keyframes fadeIn {
-        to { opacity: 1; }
-    }
+@keyframes fade{
+    to{opacity:1;}
+}
 
-    .icon {
-        position: absolute;
-        top: -50px;
-        font-size: 26px;
-        animation: fall linear infinite;
-    }
+/* icon rơi */
+.icon{
+    position:absolute;
+    top:-40px;
+    font-size:26px;
+    animation: fall linear infinite;
+}
 
-    @keyframes fall {
-        to {
-            transform: translateY(110vh);
-        }
+@keyframes fall{
+    to{
+        transform: translateY(110vh);
     }
+}
 
-    .hint {
-        position: absolute;
-        bottom: 20px;
-        width: 100%;
-        text-align: center;
-        font-size: 14px;
-        opacity: 0.6;
-    }
+/* gợi ý click */
+.hint{
+    position:absolute;
+    bottom:15px;
+    width:100%;
+    text-align:center;
+    font-size:13px;
+    opacity:0.6;
+}
 </style>
 </head>
+
 <body>
 
 <audio id="music" loop>
@@ -59,7 +64,7 @@
 
 <div class="text">
     Merry Christmas 🎄<br>
-    Wish you a warm and happy winter ❄️
+    Wish you a warm and gentle winter ❄️
 </div>
 
 <div class="hint">
@@ -67,19 +72,21 @@
 </div>
 
 <script>
-    const icons = ["💛","❄️","🌲"];
-    for (let i = 0; i < 45; i++) {
-        let span = document.createElement("span");
-        span.className = "icon";
-        span.innerText = icons[Math.floor(Math.random()*icons.length)];
-        span.style.left = Math.random() * 100 + "vw";
-        span.style.animationDuration = (4 + Math.random()*6) + "s";
-        document.body.appendChild(span);
-    }
+const icons = ["💛","❄️","🌲"];
 
-    document.body.addEventListener("click", () => {
-        document.getElementById("music").play();
-    }, { once: true });
+for(let i=0;i<45;i++){
+    let span = document.createElement("span");
+    span.className = "icon";
+    span.innerText = icons[Math.floor(Math.random()*icons.length)];
+    span.style.left = Math.random()*100 + "vw";
+    span.style.animationDuration = (4 + Math.random()*6) + "s";
+    document.body.appendChild(span);
+}
+
+// click để bật nhạc
+document.body.addEventListener("click",()=>{
+    document.getElementById("music").play();
+},{once:true});
 </script>
 
 </body>
