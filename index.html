@@ -14,19 +14,36 @@ body{
     cursor:pointer;
 }
 
-/* chữ */
 .text{
     position:absolute;
     top:40%;
     width:100%;
     text-align:center;
-    font-size:32px;
+    font-size:30px;
     opacity:0;
-    animation: fade 4s forwards;
-    animation-delay:2s;
+    line-height:1.4;
 }
 
-@keyframes fade{
+/* wish chung */
+#wish1{
+    animation: showThenHide 5s forwards;
+    animation-delay:1s;
+}
+
+/* lời chúc riêng */
+#wish2{
+    animation: fadeIn 4s forwards;
+    animation-delay:7s;
+}
+
+@keyframes showThenHide{
+    0%{opacity:0;}
+    20%{opacity:1;}
+    80%{opacity:1;}
+    100%{opacity:0;}
+}
+
+@keyframes fadeIn{
     to{opacity:1;}
 }
 
@@ -39,12 +56,9 @@ body{
 }
 
 @keyframes fall{
-    to{
-        transform: translateY(110vh);
-    }
+    to{ transform: translateY(110vh); }
 }
 
-/* gợi ý click */
 .hint{
     position:absolute;
     bottom:15px;
@@ -58,13 +72,22 @@ body{
 
 <body>
 
+<!-- 🎵 NHẠC NOEL NHẸ -->
 <audio id="music" loop>
     <source src="https://files.catbox.moe/4j6q7k.mp3" type="audio/mpeg">
 </audio>
 
-<div class="text">
-    Merry Christmas 🎄<br>
+<!-- 🌙 WISH CHUNG -->
+<div id="wish1" class="text">
     Wish you a warm and gentle winter ❄️
+</div>
+
+<!-- 💛 LỜI CHÚC RIÊNG CỦA MINH -->
+<div id="wish2" class="text">
+    Noel này Minh chúc Thư luôn vui và bình yên 💛<br>
+    Mong là những ngày lạnh,<br>
+    Thư vẫn luôn có một điều gì đó<br>
+    đủ ấm để mỉm cười 🌲
 </div>
 
 <div class="hint">
@@ -72,20 +95,22 @@ body{
 </div>
 
 <script>
+/* icon rơi */
 const icons = ["💛","❄️","🌲"];
-
 for(let i=0;i<45;i++){
     let span = document.createElement("span");
-    span.className = "icon";
+    span.className="icon";
     span.innerText = icons[Math.floor(Math.random()*icons.length)];
     span.style.left = Math.random()*100 + "vw";
     span.style.animationDuration = (4 + Math.random()*6) + "s";
     document.body.appendChild(span);
 }
 
-// click để bật nhạc
+/* click là nhạc chạy */
 document.body.addEventListener("click",()=>{
-    document.getElementById("music").play();
+    const music = document.getElementById("music");
+    music.currentTime = 0;
+    music.play();
 },{once:true});
 </script>
 
