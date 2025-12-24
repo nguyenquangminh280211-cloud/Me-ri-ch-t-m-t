@@ -11,7 +11,6 @@ body{
     overflow:hidden;
     color:white;
     font-family: Arial, sans-serif;
-    cursor:pointer;
 }
 
 .text{
@@ -58,40 +57,27 @@ body{
 @keyframes fall{
     to{ transform: translateY(110vh); }
 }
-
-.hint{
-    position:absolute;
-    bottom:15px;
-    width:100%;
-    text-align:center;
-    font-size:13px;
-    opacity:0.6;
-}
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 NHẠC NOEL NHẸ -->
-<audio id="music" loop>
+<!-- 🎵 NHẠC: AUTOPLAY + MUTED -->
+<audio id="music" autoplay loop muted>
     <source src="https://files.catbox.moe/4j6q7k.mp3" type="audio/mpeg">
 </audio>
 
-<!-- 🌙 WISH CHUNG -->
+<!-- wish chung -->
 <div id="wish1" class="text">
     Wish you a warm and gentle winter ❄️
 </div>
 
-<!-- 💛 LỜI CHÚC RIÊNG CỦA MINH -->
+<!-- lời chúc Minh → Thư -->
 <div id="wish2" class="text">
-    Noel này Minh chúc Thư luôn vui và bình yên 💛<br>
-    Mong là những ngày lạnh,<br>
-    Thư vẫn luôn có một điều gì đó<br>
-    đủ ấm để mỉm cười 🌲
-</div>
-
-<div class="hint">
-    Click anywhere to start the music 🎵
+    Noel này Minh chúc Thư luôn bình yên 💛<br>
+    Giữa những ngày đông lạnh,<br>
+    mong là Thư vẫn có<br>
+    một điều gì đó đủ ấm để mỉm cười 🌲
 </div>
 
 <script>
@@ -106,12 +92,14 @@ for(let i=0;i<45;i++){
     document.body.appendChild(span);
 }
 
-/* click là nhạc chạy */
-document.body.addEventListener("click",()=>{
+/* tự unmute sau khi load */
+window.addEventListener("load", ()=>{
     const music = document.getElementById("music");
-    music.currentTime = 0;
-    music.play();
-},{once:true});
+    setTimeout(()=>{
+        music.muted = false;
+        music.volume = 0.6;
+    }, 500);
+});
 </script>
 
 </body>
